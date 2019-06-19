@@ -1,10 +1,9 @@
 package com.kishorpan2Secproject.codefellowship;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,13 +20,24 @@ public class AppUser implements UserDetails {
     long id;
     String username;
     String password;
+    String firstname;
+    String lastname;
+    String dateofbirth;
+    String bio;
+
 
     public AppUser(){};
 
-    public AppUser(String username, String password){
+    public AppUser(String username, String password, String firstname, String lastname, String dateofbirth, String bio){
         this.username = username;
         this.password = password;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.dateofbirth = dateofbirth;
+        this.bio = bio;
     }
+
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

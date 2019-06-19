@@ -49,11 +49,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout();
 
     }
+
     @Override
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
+
     @Bean
     public UserDetailsServiceImpl getUserDetailsService() {
         return new UserDetailsServiceImpl();
