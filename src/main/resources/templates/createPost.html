@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<body>
+
+<title>Create Post</title>
+
+<h2>Create Post</h2>
+<div th:replace="fragment :: potato">...</div>
+<div>
+    <form action="/create/post" method="post">
+        <p>Enter a post!</p>
+        <p><input type="text" name="body"></p>
+        <p><input type="submit" name="Submit"></p>
+    </form>
+</div>
+</body>
+</html>

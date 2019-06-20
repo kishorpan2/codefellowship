@@ -5,11 +5,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 
@@ -17,13 +15,17 @@ public class AppUser implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    long id;
-    String username;
-    String password;
-    String firstname;
-    String lastname;
-    String dateofbirth;
-    String bio;
+    private long id;
+    @Column(unique =true)
+    private String username;
+    private String password;
+    private String firstname;
+    private String lastname;
+    private String dateofbirth;
+    private String bio;
+
+    @OneToMany(mappedBy="creator")
+    private List<Post> postList;
 
 
     public AppUser(){};
@@ -37,7 +39,18 @@ public class AppUser implements UserDetails {
         this.bio = bio;
     }
 
-
+    public String getFirstname() {
+        return this.firstname;
+    }
+    public String getLastname() {
+        return this.lastname;
+    }
+    public String getDateofbirth() {
+        return this.dateofbirth;
+    }
+    public String getBio() {
+        return this.bio;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -72,5 +85,13 @@ public class AppUser implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public List<Post> getPostList() {
+        return postList;
+    }
+
+    public void setPostList(List<Post> postList) {
+        this.postList = postList;
     }
 }
