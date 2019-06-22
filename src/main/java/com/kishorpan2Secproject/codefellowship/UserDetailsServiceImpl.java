@@ -5,6 +5,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+// required or login
+
 public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     AppUserRepo appUserRepo;

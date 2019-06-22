@@ -1,0 +1,27 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <title>Feeds</title>
+</head>
+<body>
+    <h1>Feeds</h1>
+    <div th:replace="fragment :: potato">...</div>
+
+            <ul>
+                <li th:each="user :${currentUser.following}">
+                    <!--<div th:if="$(user.postList)}">-->
+                        <h4 th:text="${user.username}"> </h4>
+                        <ul>
+                            <li th:each="post : ${user.postList}">
+                                <p><span th:text="'Post: ' + ${post.body}" ></span>  </p>
+                                <p> <span th:text="'Created On: '+ ${post.createdAt}"></span></p>
+
+                            </li>
+                        </ul>
+
+                </li>
+            </ul>
+
+
+</body>
+</html>
