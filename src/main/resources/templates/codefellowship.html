@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <link rel="stylesheet" type="text/css" href="./style.css">
+
+</head>
+
 <body>
 
 <title>CodeFellowship</title>
@@ -9,11 +15,11 @@
 <div th:replace="fragment :: potato">...</div>
 <div>
 <p> Welcome, <span th:text="${principal.username}"></span></p>
-<p> Your Password: <span th:text="${principal.password}"></span></p>
 <p> First Name: <span th:text="${principal.firstname}"></span></p>
 <p> Last Name: <span th:text="${principal.lastname}"></span></p>
 <p> Date of Birth: <span th:text="${principal.dateofbirth}"></span></p>
 <p> Bio: <span th:text="${principal.bio}"></span></p>
+    <img src="https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832_960_720.jpg" width="200 px">
     <br>
  <h2>This is where my posts live</h2><br>
     <div th:each="post : ${principal.postList}">

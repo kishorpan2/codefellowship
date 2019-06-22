@@ -1,0 +1,26 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <link rel="stylesheet" href="./style.css"/>
+
+    <title>
+        Discover Page
+    </title>
+</head>
+<body>
+    <div th:replace="fragment :: potato">...</div>
+
+    <h3>Friends</h3>
+
+    <div th:each="user :${allUsers}">
+        <form method="POST" action="/user/addFriends">
+
+            <p th:text="${user.username}"></p>
+            <input type="hidden" name="selectedUser" th:value="${user.id}">
+            <button type="submit">Follow</button>
+
+        </form>
+    </div>
+
+</body>
+</html>

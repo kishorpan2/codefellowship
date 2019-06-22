@@ -2,18 +2,19 @@
 
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <link rel="stylesheet" type="text/css" href="./style.css">
     <title>Signup</title>
 </head>
 <h1>Sign Up</h1>
 
 <body>
 <form input="/signup" method="POST">
-    User Name<input name="username" /> <br>
-    Password<input name="password" /> <br>
-    First Name<input name="firstName" /> <br>
-    LastName<input name="lastName" /> <br>
-    Date of Birth<input name="dateOfBirth" /> <br>
-    Bio<input name="bio" /> <br>
+    User Name<input name="username"  required/> <br>
+    Password<input name="password" required/> <br>
+    First Name<input name="firstName" required/> <br>
+    LastName<input name="lastName" required/> <br>
+    Date of Birth<input name="dateOfBirth" required/> <br>
+    Bio<input name="bio" required/> <br>
     <input type="submit" />
 </form>
 

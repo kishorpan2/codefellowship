@@ -7,7 +7,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 
@@ -38,6 +40,16 @@ public class AppUser implements UserDetails {
         this.dateofbirth = dateofbirth;
         this.bio = bio;
     }
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(
+            name = "followers_following",
+            joinColumns = {@JoinColumn(name ="follower_id")},
+            inverseJoinColumns = {@JoinColumn(name = "following_id")}
+
+    )
+    private Set<AppUser> followers = new HashSet<>();
+    @ManyToMany(mappedBy = "followers")
+    private Set<AppUser> following = new HashSet<>();
 
     public String getFirstname() {
         return this.firstname;
@@ -50,6 +62,9 @@ public class AppUser implements UserDetails {
     }
     public String getBio() {
         return this.bio;
+    }
+    public long getId() {
+        return this.id;
     }
 
     @Override
@@ -93,5 +108,22 @@ public class AppUser implements UserDetails {
 
     public void setPostList(List<Post> postList) {
         this.postList = postList;
+    }
+
+    public Set<AppUser> getFollowers() {
+        return followers;
+    }
+
+    public void setFollowers(AppUser followers) {
+        this.followers.add(followers);
+    }
+
+    public Set<AppUser> getFollowing() {
+        return following;
+    }
+
+    public void setFollowing(AppUser following) {
+        this.following.add(following);
+
     }
 }
